@@ -215,7 +215,7 @@ public class BaseActivity2
       i = 4;
       this.jdField_h_of_type_JavaLangString = paramBundle.getSharedPreferences("Last_Login", i).getString("uin", null);
       if ((this.jdField_h_of_type_JavaLangString == null) && (QLog.isColorLevel())) {
-        QLog.d(jdField_g_of_type_JavaLangString, 1, "last uin is null.. has porblem?");
+        QLog.d(jdField_g_of_type_JavaLangString, 1, "last uin is null.. has problem?");
       }
       StatisticCollector.a(this).c(this);
       if (InitSkin.jdField_a_of_type_Boolean) {
@@ -387,8 +387,12 @@ public class BaseActivity2
   }
 }
 
-
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
- * Qualified Name:     com.tencent.mobileqq.app.BaseActivity2
- * JD-Core Version:    0.7.0.1
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+
+ * Qualified Name:     com.tencent.mobileqq.app.BaseActivity2
+
+ * JD-Core Version:    0.7.0.1
+
  */
